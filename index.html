@@ -1,10 +1,18 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
+<!--TO DO LIST
+Portfolio
+-Make a home page
+-add links to page
+-complete all tasks to get the marks
+-center and make visually appealing
 
-<head>
+Project
+Get a Topic, investigate the data
+-->
+
+<head> <!--Head where meta daata is stored-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,14 +32,16 @@
 </head>
 
 
-
+<!--Week 1-->
 <body>
 
-    <h1>Data Science 2021.</h1>
+    <h1>Tim Edwards Data Science Website</h1>
+    
+    <h3>Week 1</h3>
 
     <h3>Covid-19</h3>
 
-    <p>The first chart tracks Covid-19 cases by UK region.</p>
+    <p>Covid-19 cases by UK region.</p>
 
 <!--Vaga embed, with notes for what is going on-->
 <div class="chart" id="firstChart">
@@ -50,7 +60,7 @@
 
   <h3>Productivity puzzle</h3>
 
-  <p>My second chart looks at productivity in the UK</p>
+  <p>Productivity in the UK 1971-2021</p>
 
 <div class="chart" id="secondChart">
   <script>
@@ -58,10 +68,18 @@
     vegaEmbed('#secondChart', myChart2);
   </script>
 </div>
+<!-- hw 1-->
+<h3>CO2 Food</h3>
+<p>CO2 Food Graph</p>
+
+<div class="chart" id="thirdChart">
+  <script>
+    var myChart3 = "chart3_foodCO2.json";
+    vegaEmbed('#thirdChart', myChart3)
+  </script> 
+</div>
     
 </body>
 
 
 </html>
-
-
