@@ -34,7 +34,7 @@
       ]
     },
     {
-      "transform": [{"pivot": "economy", "value": "GDP", "groupby": ["time"]}],
+      "transform": [{"pivot": "economy", "value": "GDPCapita", "groupby": ["time"]}],
       "mark": "rule",
       "encoding": {
         "opacity": {
