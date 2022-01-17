@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Episodes of Seinfeld per season",
+  "title": {
+    "text": "Number of Seinfeld episodes per season",
+    "subtitle": "Task4: Inline JSON chart",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "height": 300,
+  "width": 310,
+  "data": {
+    "values": [
+      {"Season": "1", "Episodes": 5},
+      {"Season": "2", "Episodes": 12},
+      {"Season": "3", "Episodes": 23},
+      {"Season": "4", "Episodes": 24},
+      {"Season": "5", "Episodes": 22},
+      {"Season": "6", "Episodes": 24},
+      {"Season": "7", "Episodes": 24},
+      {"Season": "8", "Episodes": 22},
+      {"Season": "9", "Episodes": 24}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Season", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "Episodes", "type": "quantitative"}
+  },
+  "config": {}
+}

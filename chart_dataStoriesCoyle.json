@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Global Oil Subsidies, Source IEA.",
+  "title": {
+    "text": "Global Oil Subsidies Data Stories Task",
+    "subtitle": "Source:IEA",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/TimEdwards00/TimEdwards00.github.io/main/talkingecondata.csv"
+  },
+  "format": {"type": "csv"},
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal"},
+    "y": {"field": "Global Oil Subsidies $million", "type": "quantitative"}
+  },
+  "config": {}
+}
