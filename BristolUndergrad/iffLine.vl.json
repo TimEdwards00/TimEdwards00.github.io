@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "International financial flows for renewables.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/TimEdwards00/TimEdwards00.github.io/main/modData.csv"
+  },
+  "title": {
+    "text": "International Financial Flows towards Renewables in emerging markets",
+    "subtitle": "Source:UN-SDG",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "height": 300,
+  "width": 345,
+  "encoding": {"x": {"field": "time", "type": "temporal", "title": "Year"}},
+  "layer": [
+    {
+      "encoding": {
+        "color": {"field": "economy", "type": "nominal"},
+        "y": {
+          "field": "iff",
+          "type": "quantitative",
+          "title": "Finanical Flows $million"
+        }
+      },
+      "layer": [
+        {"mark": "line"},
+        {
+          "transform": [{"filter": {"param": "hover", "empty": false}}],
+          "mark": "point"
+        }
+      ]
+    },
+    {
+      "transform": [{"pivot": "economy", "value": "iff", "groupby": ["time"]}],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "BRA", "type": "quantitative"},
+          {"field": "CHN", "type": "quantitative"},
+          {"field": "IDN", "type": "quantitative"},
+          {"field": "IND", "type": "quantitative"},
+          {"field": "MEX", "type": "quantitative"},
+          {"field": "NGA", "type": "quantitative"},
+          {"field": "TUR", "type": "quantitative"},
+          {"field": "ZAF", "type": "quantitative"}
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["time"],
+            "nearest": true,
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}

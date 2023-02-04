@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Percentage renewables.",
+  "title": {
+    "text": "Percentage of energy consumption from renewables",
+    "subtitle": "Source:World Bank API",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/TimEdwards00/TimEdwards00.github.io/main/wbData.csv",
+    "format": {"type": "csv"}
+  },
+  "height": 300,
+  "width": 345,
+  "encoding": {"x": {"field": "time", "type": "temporal", "title": "Year"}},
+  "layer": [
+    {
+      "encoding": {
+        "color": {"field": "economy", "type": "nominal"},
+        "y": {
+          "field": "percentRenewable",
+          "type": "quantitative",
+          "title": "Percentage from Renewables"
+        }
+      },
+      "layer": [
+        {"mark": "line"},
+        {
+          "transform": [{"filter": {"param": "hover", "empty": false}}],
+          "mark": "point"
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"pivot": "economy", "value": "percentRenewable", "groupby": ["time"]}
+      ],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "BRA", "type": "quantitative"},
+          {"field": "CHN", "type": "quantitative"},
+          {"field": "IDN", "type": "quantitative"},
+          {"field": "IND", "type": "quantitative"},
+          {"field": "MEX", "type": "quantitative"},
+          {"field": "NGA", "type": "quantitative"},
+          {"field": "TUR", "type": "quantitative"},
+          {"field": "ZAF", "type": "quantitative"}
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["time"],
+            "nearest": true,
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
